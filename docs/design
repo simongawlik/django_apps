@@ -1,0 +1,32 @@
+
+
+Blog Model Design
+
+Model for blog entry should contain:
+    title       char
+    author      char
+    tags        ????
+    slug        char
+    body        char
+    created     timestamp defaults to created datetime
+    updated     datetime defaults to most recent modification
+    published   boolean if article should be displayed publicly
+
+
+
+
+Project Plan
+
+    Create static landing page
+    Create static profile and contact page (social and contact form)
+    Create basic blog page
+    Create Model for blog -- Test model in admin view
+    Security - validate ALL input fields properly
+    
+    
+    
+Nice-To-Have
+    
+    Commenting app for blog
+    
+    
