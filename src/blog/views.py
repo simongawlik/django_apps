@@ -3,8 +3,9 @@ from models import BlogPost
 
 # Create your views here.
 def home(request):
-    return render(request, "home.html", {})
+    title = "Welcome"
+    context = {
+        "title": title,
+    }
+    return render(request, "base.html", context)
     
-def blog(request, blog_id):
-    blog = BlogPost.objects.get(pk=blog_id)
-    return render(request, '')
