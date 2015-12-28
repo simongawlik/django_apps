@@ -1,7 +1,5 @@
-# from django.conf.urls import url
-# 
-# from . import views
-# 
-# urlpatterns = [
-#     url(r'^$', views.home, name='home'),
-# ]
+from django.conf.urls import patterns, include, url
+
+urlpatterns = [
+    url(r'^(?P<blog_id>\d+)/$', views.blog),
+]
