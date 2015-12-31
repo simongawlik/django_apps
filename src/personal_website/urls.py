@@ -19,11 +19,14 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from blog import views
+import blog.views
+import personal_website.views
 
 urlpatterns = [
-    url(r'^blog/', views.home, name='home'),
-    url(r'^$', views.home, name='home'),
+    url(r'^blog/', blog.views.home, name='home'),
+    url(r'^about/', personal_website.views.about, name='about'),
+
+    url(r'^$', blog.views.home, name='home'),
     
     url(r'^admin/', admin.site.urls),
 ]
