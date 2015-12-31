@@ -3,6 +3,11 @@
 
 {% block head_title %}Welcome |{% endblock %}
 
+<style>
+{% block style %}
+{% endblock %}
+</style>
+
 {% block jumbotron %}
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -23,6 +28,8 @@
 {% endblock %}
 
 {% block content %}
+<div class="text-align-center">
 hello, world!
 <h1>{{ title }}</h1>
+</div>
 {% endblock %}
