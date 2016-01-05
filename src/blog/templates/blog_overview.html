@@ -7,7 +7,10 @@
           <div class="blog-post">
             <h2 class="blog-post-title"><a href="/blog/{{ article.id }}">{{ article.title }}</a></h2>
             <p class="blog-post-meta">{{ article.created }} by <a href="#">{{ article.author }}</a></p>
-            {{ article.body }}
+            {{ article.body|safe }}
+            {% autoescape off %}
+                {{ article.body }}
+            {% endautoescape %}
           </div><!-- /.blog-post -->
     {% endfor %}
 {% endblock %}
