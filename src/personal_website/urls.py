@@ -24,12 +24,11 @@ import personal_website.views
 
 urlpatterns = [
     url(r'^blog/', include('blog.urls')),
-    # url(r'^blog/', blog.views.blog, name='blog'),
     url(r'^about/', personal_website.views.about, name='about'),
     url(r'^contact/', personal_website.views.contact, name='contact'),
     
     # change this to a personal_website view?
-    url(r'^$', personal_website.views.index, name='index'),
+    url(r'^$', personal_website.views.home, name='home'),
     # url(r'^$', blog.views.home, name='home'),
     
     url(r'^admin/', admin.site.urls),

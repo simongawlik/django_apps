@@ -8,15 +8,12 @@ from models import BlogPost
 #         "title": title,
 #     }
 #     return render(request, "home.html", context)
+
     
-# def blog(request):
-#     title = "Welcome"
-#     context = {
-#         "title": title,
-#     }
-#     return render(request, "blog.html", context)
-    
-def blog(request, blog_id):
+def blog_post(request, blog_id):
     article = BlogPost.objects.get(pk=blog_id)
-    return render(request, "blog.html", {'article': article})
-    
+    return render(request, "blog_post.html", {'article': article})
+
+def blog_overview(request):
+    blogs = BlogPost.objects.all()
+    return render(request, "blog_overview.html", {'blogs': blogs})
