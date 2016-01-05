@@ -23,7 +23,8 @@ import blog.views
 import personal_website.views
 
 urlpatterns = [
-    url(r'^blog/', blog.views.blog, name='blog'),
+    url(r'^blog/', include('blog.urls')),
+    # url(r'^blog/', blog.views.blog, name='blog'),
     url(r'^about/', personal_website.views.about, name='about'),
     url(r'^contact/', personal_website.views.contact, name='contact'),
     
