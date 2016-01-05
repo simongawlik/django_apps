@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="{% block meta-content %}{% endblock %}">
+    <meta name="author" content="{% block meta-author %}{% endblock %}">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Blog Template for Bootstrap</title>
+
+    {% include 'head_css.html' %}
+
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}    
+
+    {% block blogcontent %}
+    {% endblock %}
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    {% include 'javascript.html' %}
+  </body>
+</html>

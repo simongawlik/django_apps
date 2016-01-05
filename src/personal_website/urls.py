@@ -29,7 +29,8 @@ urlpatterns = [
     url(r'^contact/', personal_website.views.contact, name='contact'),
     
     # change this to a personal_website view?
-    url(r'^$', blog.views.home, name='home'),
+    url(r'^$', personal_website.views.index, name='index'),
+    # url(r'^$', blog.views.home, name='home'),
     
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+{% block meta-content %}{% endblock %}
+{% block meta-author %} {{ article.author }} {% endblock %}
+{% block title %} {{ article.title }} {% endblock %}
+{% block blogcontent %}
+    {% for article in blogs %}
+          <div class="blog-post">
+            <h2 class="blog-post-title"><a href="/blog/{{ article.id }}">{{ article.title }}</a></h2>
+            <p class="blog-post-meta">{{ article.created }} by <a href="#">{{ article.author }}</a></p>
+            {{ article.body }}
+          </div><!-- /.blog-post -->
+    {% endfor %}
+{% endblock %}
