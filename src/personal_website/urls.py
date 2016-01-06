@@ -19,19 +19,17 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-import blog.views
 import personal_website.views
 
 urlpatterns = [
+    # generic django urlpatterns:
+    url(r'^admin/', admin.site.urls),
+    
+    # project urlpatterns
     url(r'^blog/', include('blog.urls')),
     url(r'^about/', personal_website.views.about, name='about'),
     url(r'^contact/', personal_website.views.contact, name='contact'),
-    
-    # change this to a personal_website view?
     url(r'^$', personal_website.views.home, name='home'),
-    # url(r'^$', blog.views.home, name='home'),
-    
-    url(r'^admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
