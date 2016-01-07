@@ -1,6 +1,6 @@
 {# this means home extends/inherits from base.html #}
 {% extends "base.html" %}
-
+{% load staticfiles %}
 {% block head_title %}Welcome |{% endblock %}
 
 <style>
@@ -24,8 +24,8 @@
                     <a class="btn btn-lg btn-primary" href="contact.html" role="button">Contact &raquo;</a>
                     </p>
                 </div>
-                <!-- remove once picture is inserted -->
-                <div class='col-sm-4' style='background-color:black;height:300px;'>
+                <div class='col-sm-4'>
+                <img src="{% static 'img/simon_gawlik.png' %}" class="image-responsive" />
                 </div>
             </div>
         </div>
