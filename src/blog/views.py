@@ -15,5 +15,5 @@ def blog_post(request, blog_id):
     return render(request, "blog_post.html", {'article': article})
 
 def blog_overview(request):
-    blogs = BlogPost.objects.all()
+    blogs = BlogPost.objects.all()[:4]
     return render(request, "blog_overview.html", {'blogs': blogs})
