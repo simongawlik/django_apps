@@ -15,21 +15,26 @@ Model for blog entry should contain:
 
 
 
-Project Plan
+TODO
 
-    Create static landing page
-    Create static profile and contact page (social and contact form)
-    Create basic blog page
-    Create Model for blog -- Test model in admin view
-    Security - validate ALL input fields properly
+    Create slugs that can be used to bookmark pages
+    Create contact form to send emails (tie in mail server)
+    Create monthly views
+    Render 3-5 blog articles on each /blog page that the user clicks through
+    Sort blogs by date
+    Ensure that "published" prevents blogs from rendering before they are ready
+    Tie in first click on published with publication date 
+    
     
     
     
 Nice-To-Have
     
-    Commenting app for blog
+    Commenting on the blog (needs user auth - look into auth redux)
     
 
 
-Random notes:
-- choose between cdn and local static files
+Pre-deploy checklist:
+- choose between cdn and local static files for bootstrap CSS.
+- ensure to turn off debug setting before going live.
+- Security - validate ALL input fields properly
