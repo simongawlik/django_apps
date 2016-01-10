@@ -4,7 +4,12 @@ from django.contrib import admin
 from .models import BlogPost
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ("title", "created")
+    list_display = ["title", "updated", "created"]
+    list_filter = ["updated", "created"]
+    search_fields = ["title", "body"]
     prepopulated_fields = {"slug": ("title",)}
+    class Meta:
+        model = BlogPost
+    
 
 admin.site.register(BlogPost, BlogPostAdmin)

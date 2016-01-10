@@ -25,8 +25,7 @@ TODO
     Sort blogs by date
     Ensure that "published" prevents blogs from rendering before they are ready
     Tie in first click on published with publication date 
-    
-    
+    For DB use MySPL or postgres    
     
     
 Nice-To-Have
