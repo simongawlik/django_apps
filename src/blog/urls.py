@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, include, url
 
-import blog.views
+from . import views
 
 
 urlpatterns = [
-    url(r'^$', blog.views.blog_overview, name='blog'),
-    url(r'^(?P<blog_id>\d+)/$', blog.views.blog_post),
+    url(r'^$', views.blog_list, name='blog'),
+    url(r'^create$', views.blog_post_create),
+    url(r'^(?P<blog_id>\d+)/$', views.blog_post),
 ]
