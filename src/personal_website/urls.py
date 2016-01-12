@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
     # project urlpatterns
-    url(r'^blog/', include('blog.urls')),
+    url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^about/', personal_website.views.about, name='about'),
     url(r'^contact/', personal_website.views.contact, name='contact'),
     url(r'^$', personal_website.views.home, name='home'),

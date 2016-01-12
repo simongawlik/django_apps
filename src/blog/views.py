@@ -14,7 +14,7 @@ def blog_post_detail(request, blog_id):
     return render(request, "blog_post.html", context)
 
 def blog_list(request):
-    queryset = BlogPost.objects.all()[:4]
+    queryset = BlogPost.objects.all()
     context = {'blogpost_list': queryset}
     return render(request, "blog_overview.html", context)
 

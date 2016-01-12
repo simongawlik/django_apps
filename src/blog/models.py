@@ -27,7 +27,7 @@ class BlogPost(models.Model):
         return self.title
         
     def get_absolute_url(self):
-        return reverse("detail", kwargs={"blog_id": self.id})
+        return reverse("blog:detail", kwargs={"blog_id": self.id})
             
     # @models.permalink
 #     def get_absolute_url(self):
