@@ -3,12 +3,12 @@
 {% block meta-author %} {{ article.author }} {% endblock %}
 {% block title %} {{ article.title }} {% endblock %}
 {% block blogcontent %}
-    {% for article in blogs %}
+    {% for blogpost in blogpost_list %}
           <div class="blog-post">
-            <h2 class="blog-post-title"><a href="/blog/{{ article.id }}">{{ article.title }}</a></h2>
-            <p class="blog-post-meta">{{ article.created }} by <a href="#">{{ article.author }}</a></p>
+            <h2 class="blog-post-title"><a href="/blog/{{ blogpost.id }}">{{ blogpost.title }}</a></h2>
+            <p class="blog-post-meta">{{ blogpost.created }} by <a href="#">{{ blogpost.author }}</a></p>
 
-            {{ article.body|safe }}
+            {{ blogpost.body|safe }}
 
           </div><!-- /.blog-post -->
     {% endfor %}
