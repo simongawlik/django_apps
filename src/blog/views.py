@@ -3,14 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from models import BlogPost
 
 # Create your views here.
-# def home(request):
-#     title = "Welcome"
-#     context = {
-#         "title": title,
-#     }
-#     return render(request, "home.html", context)
-
-    
 
     
 def blog_post_create(request):
@@ -18,7 +10,6 @@ def blog_post_create(request):
     
 def blog_post_detail(request, blog_id):
     instance = get_object_or_404(BlogPost, id=blog_id)
-    article = BlogPost.objects.get(pk=blog_id)
     context = {'instance': instance}
     return render(request, "blog_post.html", context)
 

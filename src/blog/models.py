@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 
 from django.template.defaultfilters import slugify
@@ -26,7 +27,7 @@ class BlogPost(models.Model):
         return self.title
         
     def get_absolute_url(self):
-        return "/blog/%i" % self.pk
+        return reverse("detail", kwargs={"blog_id": self.id})
             
     # @models.permalink
 #     def get_absolute_url(self):
