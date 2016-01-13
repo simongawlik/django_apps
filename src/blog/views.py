@@ -9,6 +9,8 @@ from .models import BlogPost
     
 def blog_post_create(request):
     form = BlogPostForm()
+    if request.method == "POST":
+        print request.POST
     context = {'form': form}
     return render(request, "blog_form.html", context)
 
