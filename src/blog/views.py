@@ -1,5 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import BlogPostForm
 from .models import BlogPost
@@ -12,9 +13,10 @@ def blog_post_create(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-    # if request.method == "POST":
-#         print request.POST.get("body")
-#         print request.POST.get("title")
+        messages.success(request, "Successfully created")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    else:
+        messages.error(request, "Not successfully created")
     context = {'form': form}
     return render(request, "blog_form.html", context)
 
@@ -31,9 +33,24 @@ def blog_list(request):
     return render(request, "blog_overview.html", context)
 
 
-def blog_post_update(request):
-    return HttpResponse("<h1>Update</h1>")
+def blog_post_update(request, blog_id=None):
+    instance = get_object_or_404(BlogPost, id=blog_id)
+    form = BlogPostForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Saved")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        'instance': instance, 
+        'form': form,
+    }
+    
+    return render(request, "blog_form.html", context)
 
 
-def blog_post_delete(request):
-    return HttpResponse("<h1>Delete</h1>")
+def blog_post_delete(request, blog_id=None):
+    instance = get_object_or_404(BlogPost, id=blog_id)
+    instance.delete()
+    messages.success(request, "Successfully deleted")
+    return redirect("blog:list")
