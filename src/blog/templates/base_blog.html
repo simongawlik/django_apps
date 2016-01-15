@@ -10,7 +10,7 @@
     <meta name="author" content="{% block meta-author %}{% endblock %}">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block head_title %}Simon's Blog{% endblock head_title %}</title>
 
     {% include 'head_css.html' %}
     
@@ -27,10 +27,14 @@
         <h1 class="blog-title">Simon's Blog</h1>
         <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
       </div>
-
+      
+      {% include 'messages_display.html' %}
+      
       <div class="row">
 
         <div class="col-sm-8 blog-main">
+
+
 
           {% block blogcontent %}
           {% endblock %}

@@ -1,22 +1,14 @@
 {% extends 'base_blog.html' %}
 {% block meta-content %}{% endblock %}
 {% block meta-author %} {{ instance.author }} {% endblock %}
-{% block title %} {{ instance.title }} {% endblock %}
+{% block head_title %}{{ instance.title }} | {{ block.super }}{% endblock %}
 {% block blogcontent %}
 
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-          <div class="blog-post">
+        <div class="blog-post">
             <h2 class="blog-post-title">{{ instance.title }}</h2>
             <p class="blog-post-meta">{{ instance.created }} by <a href="#">{{ instance.author }}</a></p>
             
             {{ instance.body }}
             
-          </div><!-- /.blog-post -->
-{% endblock %}
+        </div><!-- /.blog-post -->
+{% endblock blogcontent %}

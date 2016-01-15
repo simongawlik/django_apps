@@ -1,7 +1,7 @@
 {% extends 'base_blog.html' %}
 {% block meta-content %}{% endblock %}
 {% block meta-author %} {{ article.author }} {% endblock %}
-{% block title %} {{ article.title }} {% endblock %}
+{% block head_title %}{{ block.super }}{% endblock %}
 {% block blogcontent %}
     {% for blogpost in blogpost_list %}
           <div class="blog-post">
