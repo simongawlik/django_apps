@@ -26,7 +26,7 @@ def blog_post_detail(request, blog_id):
 
 
 def blog_list(request):
-    queryset = BlogPost.objects.all()
+    queryset = BlogPost.objects.all()   #.order_by("-created")
     context = {'blogpost_list': queryset}
     return render(request, "blog_overview.html", context)
 

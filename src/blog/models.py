@@ -28,7 +28,9 @@ class BlogPost(models.Model):
         
     def get_absolute_url(self):
         return reverse("blog:detail", kwargs={"blog_id": self.id})
-            
+           
+    class Meta:
+        ordering = ["-created", "-updated"] 
     # @models.permalink
 #     def get_absolute_url(self):
 #         return ('blog_post_detail', (), 
