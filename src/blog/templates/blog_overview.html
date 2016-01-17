@@ -12,4 +12,18 @@
 
           </div><!-- /.blog-post -->
     {% endfor %}
+
+        <nav>
+            <ul class="pager">
+                {% if blogpost_list.has_previous %}
+                <li><a href="?page={{ blogpost_list.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                <li>Page {{ blogpost_list.number }} of {{ blogpost_list.paginator.num_pages }}.</li>
+                {% if blogpost_list.has_next %}
+                <li><a href="?page={{ blogpost_list.next_page_number }}">Next</a></li>
+                {% endif %}
+                
+            </ul>
+        </nav>
+    
 {% endblock %}

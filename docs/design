@@ -22,7 +22,6 @@ TODO
     Create slugs that can be used to bookmark pages
     Create contact form to send emails (tie in mail server)
     Create monthly views
-    Render 3-5 blog articles on each /blog page that the user clicks through
     Ensure that "published" prevents blogs from rendering before they are ready
     Tie in first click on published with publication date 
     For DB use MySPL or postgres    
