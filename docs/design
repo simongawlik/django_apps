@@ -13,7 +13,7 @@ Model for blog entry should contain:
     published   boolean if article should be displayed publicly
 
 
-
+=============================================================================
 
 TODO
 
@@ -32,7 +32,7 @@ TODO
 Nice-To-Have
     
     Commenting on the blog (needs user auth - look into auth redux)
-    
+    playground to showcase other projects
 
 
 Pre-deploy checklist:
