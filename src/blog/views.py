@@ -20,8 +20,8 @@ def blog_post_create(request):
     return render(request, "blog_form.html", context)
 
     
-def blog_post_detail(request, blog_id):
-    instance = get_object_or_404(BlogPost, id=blog_id)
+def blog_post_detail(request, slug):
+    instance = get_object_or_404(BlogPost, slug=slug)
     context = {'instance': instance}
     return render(request, "blog_post.html", context)
 
@@ -47,20 +47,9 @@ def blog_list(request):
         
     return render(request, "blog_overview.html", context)
 
-"""
 
-from django.shortcuts import render
-
-def listing(request):
-    contact_list = Contacts.objects.all()
-    
-
-    return render(request, 'list.html', {'contacts': contacts})
-"""
-
-
-def blog_post_update(request, blog_id=None):
-    instance = get_object_or_404(BlogPost, id=blog_id)
+def blog_post_update(request, slug=None):
+    instance = get_object_or_404(BlogPost, slug=slug)
     form = BlogPostForm(request.POST or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -75,8 +64,8 @@ def blog_post_update(request, blog_id=None):
     return render(request, "blog_form.html", context)
 
 
-def blog_post_delete(request, blog_id=None):
-    instance = get_object_or_404(BlogPost, id=blog_id)
+def blog_post_delete(request, slug=None):
+    instance = get_object_or_404(BlogPost, id=slug)
     instance.delete()
     messages.success(request, "Successfully deleted")
     return redirect("blog:list")
