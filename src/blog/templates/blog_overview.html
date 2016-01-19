@@ -6,7 +6,7 @@
     {% for blogpost in blogpost_list %}
           <div class="blog-post">
             <h2 class="blog-post-title"><a href='{{ blogpost.get_absolute_url }}'>{{ blogpost.title }}</a></h2>
-            <p class="blog-post-meta">{{ blogpost.created }} by <a href="#">{{ blogpost.author }}</a></p>
+            <p class="blog-post-meta">{{ blogpost.created }} by <a href="#">{{ blogpost.user.get_full_name }}</a></p>
 
             {{ blogpost.body|safe }}
 

@@ -15,6 +15,7 @@ def blog_post_create(request):
     form = BlogPostForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.user = request.user
         instance.save()
         messages.success(request, "Successfully created")
         return HttpResponseRedirect(instance.get_absolute_url())

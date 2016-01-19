@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save
@@ -13,7 +14,8 @@ from django.utils.text import slugify
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=140)
-    author = models.CharField(max_length=100, default="Simon")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    #author = models.CharField(max_length=100, default="Simon")
     tags = models.TextField(max_length=500, null=True, blank=True)
     slug = models.SlugField(unique=True)
     body = models.TextField(max_length=15000, null=True, blank=True)
