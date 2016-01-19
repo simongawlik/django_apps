@@ -21,7 +21,6 @@ class BlogPost(models.Model):
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     published = models.BooleanField(default=False)
     
-#     objects = BlogPostQuerySet.as_manager()
     
     def __unicode__(self):      # Python 3 is __str__
         return self.title
@@ -32,24 +31,38 @@ class BlogPost(models.Model):
     class Meta:
         ordering = ["-created", "-updated"] 
 
-# needs to be improved. At this point it appends id in every recursive call.
-# should be counting up each time title is reused.
-def create_slug(instance, new_slug=None):
-    slug = slugify(instance.title)
+
+# if the title of the post occurs in multiple rows of the DB, the first 
+# occurrence will just have the title slugified. The second occurrence will 
+# have "-1" attached, etc. The counter is used to keep track and is 
+# initialized with 1 in pre_save_blogpost_receiver.
+def create_slug(instance, counter, new_slug=None):
+    existing_slug = slug = slugify(instance.title)
     if new_slug is not None:
         slug = new_slug
     queryset = BlogPost.objects.filter(slug=slug).order_by("-id")
     exists = queryset.exists()
     if exists:
-        new_slug = "%s-%s" %(slug, queryset.first().id)
-        return create_slug(instance, new_slug=new_slug)
+        new_slug = "%s-%s" %(existing_slug, counter)
+        return create_slug(instance, counter + 1, new_slug=new_slug)
     return slug
+
+# def create_slug(instance, new_slug=None):
+#     slug = slugify(instance.title)
+#     if new_slug is not None:
+#         slug = new_slug
+#     queryset = BlogPost.objects.filter(slug=slug).order_by("-id")
+#     exists = queryset.exists()
+#     if exists:
+#         new_slug = "%s-%s" %(slug, queryset.first().id)
+#         return create_slug(instance, new_slug=new_slug)
+#     return slug
     
 
 # anytime a blog post is about to be saved this method checks for duplicates
 def pre_save_blogpost_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
-        instance.slug = create_slug(instance)
+        instance.slug = create_slug(instance, 1)
         
 
 pre_save.connect(pre_save_blogpost_receiver, sender=BlogPost)
