@@ -21,7 +21,8 @@ class BlogPost(models.Model):
     body = models.TextField(max_length=15000, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-    published = models.BooleanField(default=False)
+    draft = models.BooleanField(default=False)
+    published = models.DateTimeField(auto_now_add=False, auto_now=False)
     
     
     def __unicode__(self):      # Python 3 is __str__

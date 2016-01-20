@@ -21,6 +21,7 @@ def blog_post_create(request):
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {'form': form}
     return render(request, "blog_form.html", context)
+    # return render(request, "blog/blog_form.html", context)
 
     
 def blog_post_detail(request, slug):

@@ -21,7 +21,7 @@ from django.contrib import admin
 # from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 
-import personal_website.views
+from personal_website import views
 
 urlpatterns = [
     # generic django urlpatterns:
@@ -29,10 +29,10 @@ urlpatterns = [
     
     # project urlpatterns
     url(r'^blog/', include('blog.urls', namespace='blog')),
-    url(r'^about/', personal_website.views.about, name='about'),
-    url(r'^contact/', personal_website.views.contact, name='contact'),
-    url(r'^$', personal_website.views.home, name='home'),
-    url(r'^robots.txt/$', lambda r: HttpResponse("User-agent: *\nDisallow:", 
+    url(r'^about/', views.about, name='about'),
+    url(r'^contact/', views.contact, name='contact'),
+    url(r'^$', views.home, name='home'),
+    url(r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow:", 
                                                  content_type="text/plain")),
     # url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, 
 #         name='django.contrib.sitemaps.views.sitemap'),
