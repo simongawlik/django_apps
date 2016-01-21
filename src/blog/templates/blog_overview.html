@@ -5,7 +5,7 @@
 {% block blogcontent %}
     {% for blogpost in blogpost_list %}
           <div class="blog-post">
-            <h2 class="blog-post-title"><a href='{{ blogpost.get_absolute_url }}'>{{ blogpost.title }}</a></h2>
+            <h2 class="blog-post-title"><a href='{{ blogpost.get_absolute_url }}'>{{ blogpost.title }}{% if blogpost.draft %}<span style="color:red;"> - Draft</span> {% endif %}</a></h2>
             <p class="blog-post-meta">{{ blogpost.published }} by <a href="#">{{ blogpost.user.get_full_name }}</a></p>
 
             {{ blogpost.body|safe }}

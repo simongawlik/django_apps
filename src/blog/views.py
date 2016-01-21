@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 
 from .forms import BlogPostForm
 from .models import BlogPost
@@ -26,12 +27,17 @@ def blog_post_create(request):
     
 def blog_post_detail(request, slug):
     instance = get_object_or_404(BlogPost, slug=slug)
+    if instance.draft or instance.published > timezone.now():
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     context = {'instance': instance}
     return render(request, "blog_post.html", context)
 
 
 def blog_list(request):
-    queryset_list = BlogPost.objects.all()   #.order_by("-created")
+    queryset_list = BlogPost.objects.active()   #.order_by("-created")
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list = BlogPost.objects.all()
     paginator = Paginator(queryset_list, 3) # Show 3 blog entries per page
     page_request_var = 'page'
     page = request.GET.get(page_request_var)

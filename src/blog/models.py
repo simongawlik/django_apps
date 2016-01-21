@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save
+from django.utils import timezone
 from django.utils.text import slugify
 
 # Create your models here.
@@ -11,6 +12,10 @@ from django.utils.text import slugify
 # class BlogPostQuerySet(models.QuerySet):
 #     def published(self):
 #         return self.filter(published=True)
+
+class PostManager(models.Manager):
+    def active(self, *args, **kwargs):
+        return super(PostManager, self).filter(draft=False).filter(published__lte=timezone.now())
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=140)
@@ -24,6 +29,7 @@ class BlogPost(models.Model):
     draft = models.BooleanField(default=False)
     published = models.DateTimeField(auto_now_add=False, auto_now=False)
     
+    objects = PostManager()
     
     def __unicode__(self):      # Python 3 is __str__
         return self.title
