@@ -38,6 +38,9 @@ def blog_list(request):
     queryset_list = BlogPost.objects.active()   #.order_by("-created")
     if request.user.is_staff or request.user.is_superuser:
         queryset_list = BlogPost.objects.all()
+    query = request.GET.get("q")
+    if query:
+        queryset_list = queryset_list.filter(title__icontains=query)
     paginator = Paginator(queryset_list, 3) # Show 3 blog entries per page
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
