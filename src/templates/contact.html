@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head_title %}About |{% endblock %}
+
+<style>
+{% block style %}
+{% endblock %}
+</style>
+
+{% block jumbotron %}
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-8'>
+                    <h2>Contact</h2>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class='contact col-xs-6 col-sm-3'>
+                    <h3>github</h3>
+                    <a href="https://github.com/simongawlik" class="web-presence" ><i class="fa fa-github fa-5x"></i></a>
+                </div>
+                <div class='contact col-xs-6 col-sm-3'>
+                    <h3>linkedin</h3>
+                    <a href="https://www.linkedin.com/in/simon-gawlik-13878457" class="web-presence" ><i class="fa fa-linkedin fa-5x"></i></a>
+                </div>
+                <div class='contact col-xs-6 col-sm-3'>
+                    <h3>twitter</h3>
+                    <a href="https://twitter.com/sgawi" class="web-presence" ><i class="fa fa-twitter fa-5x"></i></a>
+                </div>
+                <div class='contact col-xs-6 col-sm-3'>
+                    <h3>facebook</h3>
+                    <a href="https://www.facebook.com/simon.gawlik" class="web-presence" ><i class="fa fa-facebook fa-5x"></i></a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+</div>
+{% endblock %}
