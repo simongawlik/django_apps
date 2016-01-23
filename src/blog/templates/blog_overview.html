@@ -16,11 +16,11 @@
         <nav>
             <ul class="pager">
                 {% if blogpost_list.has_previous %}
-                <li><a href="?{{ page_request_var }}={{ blogpost_list.previous_page_number }}">Previous</a></li>
+                <li><a href="?{{ page_request_var }}={{ blogpost_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></li>
                 {% endif %}
                 <li>Page {{ blogpost_list.number }} of {{ blogpost_list.paginator.num_pages }}.</li>
                 {% if blogpost_list.has_next %}
-                <li><a href="?{{ page_request_var }}={{ blogpost_list.next_page_number }}">Next</a></li>
+                <li><a href="?{{ page_request_var }}={{ blogpost_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a></li>
                 {% endif %}
                 
             </ul>

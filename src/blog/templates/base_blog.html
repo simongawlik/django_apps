@@ -43,7 +43,7 @@
           <div class="sidebar-module sidebar-module-inset">
             <h4>Search Blog</h4>
             <form method='GET' action=''>
-            <input type='text' name='q' placeholder='Search posts'/>
+            <input type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
             <input type='submit' value='Search'/>
           </div>
           <div class="sidebar-module">
